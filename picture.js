@@ -21,7 +21,7 @@ function draw() {
   b.mousePressed(function() {
   	picture = capture;
   	image(picture, 0, 0);
-  })
+  });
   
 
 }

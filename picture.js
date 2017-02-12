@@ -9,9 +9,10 @@ function setup() {
   capture.size(320, 240);
   //capture.hide();
   b = createButton("Take Picture");
-  button = createButton("Get Picture"); //document.getElementById("startTrip");
+  b.addClass("btn btn-hg btn-primary");
+  var a = document.createElement("br");
+  button = createButton("Get Picture From Trip!"); //document.getElementById("startTrip");
   button.addClass("btn btn-hg btn-primary");
-  facialRecognition();
 }
 
 function draw() {
@@ -21,7 +22,7 @@ function draw() {
       b.mousePressed(function() {
         //picture = capture;
         image(capture, 0, 0);
-        saveCanvas("myhead", "jpg");
+        saveCanvas("myCavas", "jpg");
       });
   }
   
@@ -32,13 +33,12 @@ function getImages() {
 
         $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
         {
-            tags: "person",
+            tags: ["paris", "paris people"],
             tagmode: "any",
             format: "json"
         },
         function(data) {
             
-            for(var i = 0; i < 1; i++){
               var rnd = Math.floor(Math.random() * data.items.length);
               var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
               var img = document.createElement('img');
@@ -51,7 +51,7 @@ function getImages() {
               
 
               var tracker = new tracking.ObjectTracker(['face']);
-              tracker.setStepSize(1);
+              tracker.setStepSize(.7);
               tracking.track('#img' + rnd, tracker);
               tracker.on('track', function(event) {
                 event.data.forEach(function(rect) {
@@ -59,13 +59,12 @@ function getImages() {
                   
                 });
               });
-            }
       window.plot = function(x, y, w, h) {
 
         var rect = document.createElement('IMG');
         document.querySelector('.demo-container').appendChild(rect);
         rect.classList.add('rect');
-        rect.src = "../Downloads/myhead.jpg";//"url('" + "myhead.jpg"+"')";
+        rect.src = "myhead.jpg";//"url('" + "myhead.jpg"+"')";
         rect.style.width = w + 'px';
         rect.style.height = h + 'px';
         rect.style.left = (img.offsetLeft + x) + 'px';
@@ -84,7 +83,7 @@ function getImages() {
 function facialRecognition() {
       var img = document.getElementById('img-holder');
       var tracker = new tracking.ObjectTracker(['face']);
-      tracker.setStepSize(1);
+      tracker.setStepSize(1.7);
       tracking.track('#img', tracker);
       tracker.on('track', function(event) {
         event.data.forEach(function(rect) {

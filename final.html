@@ -1,8 +1,11 @@
-<html ng-app="myapp">
+<html>
 
   <head>
     <meta charset="UTF-8">
-
+    <script src="tracking.js-master/build/tracking-min.js"></script>
+    <script src="tracking.js-master/build/data/face-min.js"></script>
+    <script src="tracking.js-master/build/data/eye-min.js"></script>
+    <script src="tracking.js-master/build/data/mouth-min.js"></script>
     <script language="javascript" type="text/javascript" src="p5.js"></script>
     <script language="javascript" type="text/javascript" src="addons/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="picture.js"></script>
@@ -11,11 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.css">
     <script src="script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="tracking.js-master/build/tracking-min.js"></script>
-  <script src="tracking.js-master/build/data/face-min.js"></script>
-  <script src="tracking.js-master/build/data/eye-min.js"></script>
-  <script src="tracking.js-master/build/data/mouth-min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
     <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -24,12 +24,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <nav class="navbar navbar-default navbar-lg" role="navigation">
-        <a class="navbar-brand" href="index.html"><font size="10"></font>Vacationapp</a>
+    <a class="navbar-brand" href="index.html"><font size="10"></font>Vacationapp</a>
 
     </nav>
 <style>
   .rect {
-    border: 2px solid #a64ceb;
+    
     left: -1000px;
     position: absolute;
     top: -1000px;
@@ -51,6 +51,8 @@
   </div><div class="container">
 
 Wow! Your trip sure was fun! Look at you!
+
+Sad you didn't actually get to go? Take a picture in our fun photobooth!
 
 </div>
 </body>

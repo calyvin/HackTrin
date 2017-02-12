@@ -32,7 +32,7 @@ function getImages() {
 
         $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
         {
-            tags: "paris",
+            tags: "Eiffel Tower",
             tagmode: "any",
             format: "json"
         },

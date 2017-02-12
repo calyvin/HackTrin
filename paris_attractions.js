@@ -30,7 +30,7 @@ function Function3(A){
 	do{
 		pick3 = A[Math.floor(Math.random()*A.length)];
 	}
-	while(pick3 == pick1 && pick3 == pick2);
+	while(pick3 == pick1 || pick3 == pick2);
 	
 	document.getElementById("pick3").innerHTML = pick3;
 	console.log(pick3);
@@ -41,7 +41,7 @@ function Function4(A){
 	do{
 		pick4 = A[Math.floor(Math.random()*A.length)];
 	} 	
-	while(pick4 == pick3 && pick4 == pick2 && pick4 == pick1);
+	while(pick4 == pick3 || pick4 == pick2 || pick4 == pick1);
 
 	document.getElementById("pick4").innerHTML = pick4;
 	console.log(pick4);
@@ -52,7 +52,7 @@ function Function5(A){
 	do{
 		pick5 = A[Math.floor(Math.random()*A.length)];
 	}	
-	while(pick5 == pick4 && pick5 == pick3 && pick5 == pick2 && pick5 == pick1);
+	while(pick5 == pick4 || pick5 == pick3 || pick5 == pick2 || pick5 == pick1);
 	document.getElementById("pick5").innerHTML = pick5;
 	console.log(pick5);
 }

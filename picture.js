@@ -1,24 +1,20 @@
-navigator.getUserMedia(
-    // Options
-    {
-        video: true
-    },
-    // Success Callback
-    function(stream){
+var capture;
+var picture;
 
-        // Create an object URL for the video stream and
-        // set it as src of our HTLM video element.
-        video.src = window.URL.createObjectURL(stream);
+function setup() {
+  background(255, 255, 0);
+  createCanvas(320, 240);
+  capture = createCapture(VIDEO);
+  capture.size(320, 240);
+  //capture.hide();
+  b = createButton();
+}
 
-        // Play the video element to show the stream to the user.
-        video.play();
- 
-    },
-    // Error Callback
-    function(err){
+function draw() {
+  b.mousePressed(function() {
+  	picture = capture;
+  	image(picture, 0, 0);
+  })
+  
 
-        // Most common errors are PermissionDenied and DevicesNotFound.
-        console.error(err);
-
-    }
-);
+}

@@ -33,7 +33,7 @@ function getImages() {
 
         $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
         {
-            tags: ["paris", "paris people"],
+            tags: "paris people",
             tagmode: "any",
             format: "json"
         },

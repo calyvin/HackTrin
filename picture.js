@@ -18,48 +18,60 @@ function draw() {
   if(!switched) {
   		button.mousePressed(getImages);
   		switched = true;
+      b.mousePressed(function() {
+        //picture = capture;
+        image(capture, 0, 0);
+        saveCanvas("myhead", "jpg");
+      });
   }
-  b.mousePressed(function() {
-  	picture = capture;
-  	image(picture, 0, 0);
-  });
+  
 }
 
 function getImages() {
-
     $(document).ready(function(){
 
         $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
         {
-            tags: "paris tourist",
+            tags: "person",
             tagmode: "any",
             format: "json"
         },
         function(data) {
-            var rnd = Math.floor(Math.random() * data.items.length);
-
-            var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
             
-            document.getElementById("img").src = image_src;
+            for(var i = 0; i < 1; i++){
+              var rnd = Math.floor(Math.random() * data.items.length);
+              var image_src = data.items[rnd]['media']['m'].replace("_m", "_b");
+              var img = document.createElement('img');
+              img.src = image_src;
+              img.id = "img" + rnd;
+              img.setAttribute("width", "200");
+              img.setAttribute("width", "200");
 
-      var img = document.getElementById('img');
-      var tracker = new tracking.ObjectTracker(['face']);
-      tracker.setStepSize(1.7);
-      tracking.track('#img', tracker);
-      tracker.on('track', function(event) {
-        event.data.forEach(function(rect) {
-          window.plot(rect.x, rect.y, rect.width, rect.height);
-          
-        });
-      });
+              document.body.appendChild(img);
+              
+
+              var tracker = new tracking.ObjectTracker(['face']);
+              tracker.setStepSize(1);
+              tracking.track('#img' + rnd, tracker);
+              tracker.on('track', function(event) {
+                event.data.forEach(function(rect) {
+                  window.plot(rect.x, rect.y, rect.width, rect.height);
+                  
+                });
+              });
+            }
       window.plot = function(x, y, w, h) {
-        var rect = document.createElement('div');
+
+        var rect = document.createElement('IMG');
         document.querySelector('.demo-container').appendChild(rect);
         rect.classList.add('rect');
+        rect.src = "../Downloads/myhead.jpg";//"url('" + "myhead.jpg"+"')";
         rect.style.width = w + 'px';
         rect.style.height = h + 'px';
         rect.style.left = (img.offsetLeft + x) + 'px';
         rect.style.top = (img.offsetTop + y) + 'px';
+        
+        // rect.css('background-image', "url('" + image_src + "')");
       };
             //facialRecognition();
             //$('body').css('background-image', "url('" + image_src + "')");
@@ -72,7 +84,7 @@ function getImages() {
 function facialRecognition() {
       var img = document.getElementById('img-holder');
       var tracker = new tracking.ObjectTracker(['face']);
-      tracker.setStepSize(1.7);
+      tracker.setStepSize(1);
       tracking.track('#img', tracker);
       tracker.on('track', function(event) {
         event.data.forEach(function(rect) {
